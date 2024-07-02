@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Swetha.pageobjects.CartPage;
+import Swetha.pageobjects.OrderPage;
 
 public class AbstractComponent {
 		
@@ -26,6 +27,8 @@ public class AbstractComponent {
 	  
 	  @FindBy(css= "[routerlink*='cart']")
 	  WebElement cartHeader;
+	  @FindBy(css= "[routerlink*='myorders']")
+	  WebElement orderHeader;
 
 	public void waitForElementToAppear(By findBy)
 	  {
@@ -34,12 +37,25 @@ public class AbstractComponent {
 		  WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
 	  }
+	public void waitForWebElementToAppear(WebElement findBy)
+	  {
+		 
+		  
+		  WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+			wait.until(ExpectedConditions.visibilityOf(findBy));
+	  }
 	
 	public CartPage goToCartPage()
 	{
 		cartHeader.click();
 		CartPage cartPage = new CartPage(driver);
 		return cartPage;
+	}
+	public OrderPage goToOrdersPage()
+	{
+		orderHeader.click();
+		OrderPage orderPage = new OrderPage(driver);
+		return orderPage;
 	}
 	
 	public void waitForElementToDisappear(WebElement ele) throws InterruptedException

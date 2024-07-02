@@ -33,15 +33,11 @@ public class CheckoutPage extends AbstractComponent {
 
 	WebElement country;
 
-
-
 	@FindBy(xpath = "(//button[contains(@class,'ta-item')])[2]")
 
 	WebElement selectCountry;
 
 	//private By results = By.cssSelector(".ta-results");
-
-
 
 	public void selectCountry(String countryName) {
 
